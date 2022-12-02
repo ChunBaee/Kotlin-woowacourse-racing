@@ -5,8 +5,10 @@ fun main() {
 }
 
 private fun startRacingGame() {
-    val userCarLit = convertUserListToCar(UserInput().racingCarName())
+    val userCarList = convertUserListToCar(UserInput().racingCarName())
     val tryCount = UserInput().tryCount()
+
+    RacingGame(userCarList,tryCount)
 }
 
 private fun convertUserListToCar(userList : List<String>) : List<Car>{
