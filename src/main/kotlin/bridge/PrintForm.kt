@@ -18,4 +18,7 @@ class PrintForm {
         println("시도할 횟수는 숫자로 구성되어야 합니다.")
     }
 
+    fun noticePlayResultMention() {
+        println("실행 결과")
+    }
 }
