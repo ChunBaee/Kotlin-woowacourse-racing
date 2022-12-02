@@ -5,33 +5,33 @@ import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
+import javax.swing.JOptionPane
+
 
 class ApplicationTest : NsTest() {
+    private val MOVING_FORWARD = 4
+    private val STOP = 3
+    private val ERROR_MESSAGE = "[ERROR]"
 
     @Test
-    fun `기능 테스트`() {
-        assertRandomNumberInRangeTest({
-            run("3", "U", "D", "U")
-            assertThat(output()).contains(
-                "최종 게임 결과",
-                "[ O |   | O ]",
-                "[   | O |   ]",
-                "게임 성공 여부: 성공",
-                "총 시도한 횟수: 1"
-            )
-            val upSideIndex = output().indexOf("[ O |   | O ]")
-            val downSideIndex = output().indexOf("[   | O |   ]")
-            assertThat(upSideIndex).isLessThan(downSideIndex)
-        }, 1, 0, 1)
+    fun 전진_정지() {
+        assertRandomNumberInRangeTest(
+            {
+                run("pobi,woni", "1");
+                assertThat(output()).contains("pobi : -", "woni : ", "최종 우승자 : pobi");
+            },
+            MOVING_FORWARD, STOP
+        )
     }
 
     @Test
-    fun `예외 테스트`() {
+    fun 이름에_대한_예외_처리() {
         assertSimpleTest {
-            runException("a")
+            runException("pobi,javaji")
             assertThat(output()).contains(ERROR_MESSAGE)
         }
     }
+
 
     override fun runMain() {
         main()
