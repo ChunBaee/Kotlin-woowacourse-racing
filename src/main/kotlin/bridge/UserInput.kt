@@ -7,5 +7,6 @@ class UserInput {
     fun racingCarName() {
         PrintForm().noticeInputCarName()
         val userInput = Console.readLine()
+        Regex().checkUserInputCarName(userInput)
     }
 }
