@@ -12,7 +12,9 @@ class RacingGame (private val carList : List<Car>, private val tryCount : Int) {
 
     private fun loopForEachCars() {
         for(i in carList.indices) {
-            //매 회차 자동차별로 동작
+            if(ReturnRandom().returnRandom() in 4..9) {
+                carList[i].position++
+            }
         }
     }
 }
