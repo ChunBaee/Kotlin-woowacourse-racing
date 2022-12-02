@@ -26,5 +26,16 @@ class RacingGame(private val carList: List<Car>, private val tryCount: Int) {
 
     private fun checkWhoIsWinner() {
         val maxLength = carList.maxWithOrNull(Comparator.comparingInt { it.position })?.position
+
+    }
+
+    private fun addWinnerList (maxLength : Int) : List<String> {
+        val winnerList = mutableListOf<String>()
+        for(i in carList.indices) {
+            if(carList[i].position == maxLength) {
+                winnerList.add(carList[i].name)
+            }
+        }
+        return winnerList
     }
 }
