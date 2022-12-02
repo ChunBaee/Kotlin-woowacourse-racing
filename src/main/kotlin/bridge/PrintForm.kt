@@ -21,4 +21,20 @@ class PrintForm {
     fun noticePlayResultMention() {
         println("실행 결과")
     }
+
+    fun noticePlayResult(list : List<Car>) {
+        for(i in list.indices) {
+            println("${list[i].name} : ${convertNumberToBar(list[i].position)}")
+        }
+        println("")
+    }
+
+    private fun convertNumberToBar(count : Int) : String {
+        var bars = ""
+        for(i in 0 until count) {
+            bars += "-"
+        }
+        return bars
+    }
+
 }
