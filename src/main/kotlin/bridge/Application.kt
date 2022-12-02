@@ -5,6 +5,6 @@ fun main() {
 }
 
 private fun startRacingGame() {
-    PrintForm().noticeInputCarName()
+    UserInput().racingCarName()
 }
 
