@@ -37,4 +37,12 @@ class PrintForm {
         return bars
     }
 
+    fun noticeWinner(winnerList : List<String>) {
+        println("최종 우승자 : ${convertListToString(winnerList)}")
+    }
+
+    private fun convertListToString(winnerList: List<String>) : String {
+        return winnerList.toString().replace("[","").replace("]","")
+    }
+
 }

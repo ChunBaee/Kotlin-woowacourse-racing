@@ -21,12 +21,12 @@ class RacingGame(private val carList: List<Car>, private val tryCount: Int) {
     }
 
     private fun printWinner() {
-        checkWhoIsWinner()
+        PrintForm().noticeWinner(checkWhoIsWinner())
     }
 
-    private fun checkWhoIsWinner() {
+    private fun checkWhoIsWinner() : List<String> {
         val maxLength = carList.maxWithOrNull(Comparator.comparingInt { it.position })?.position
-
+        return addWinnerList(maxLength!!)
     }
 
     private fun addWinnerList (maxLength : Int) : List<String> {
