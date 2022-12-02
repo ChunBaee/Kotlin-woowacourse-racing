@@ -5,6 +5,7 @@ fun main() {
 }
 
 private fun startRacingGame() {
-    UserInput().racingCarName()
+    val userCarLit = UserInput().racingCarName()
+    val tryCount = UserInput().tryCount()
 }
 

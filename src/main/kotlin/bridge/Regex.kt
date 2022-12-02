@@ -1,5 +1,7 @@
 package bridge
 
+import java.util.regex.Pattern
+
 class Regex {
 
     fun checkUserInputCarName(userInput: String): Boolean {
@@ -15,11 +17,25 @@ class Regex {
 
     private fun tryCarNameRegex(carNameList : List<String>) {
         carNameList.forEach { carName ->
-            checkEachCarNameLength(carName)
+            if(!checkEachCarNameLength(carName)) throw IllegalArgumentException()
         }
     }
 
     private fun checkEachCarNameLength(carName: String): Boolean {
         return carName.length in 1..5
+    }
+
+    fun checkUserInputTryCount(userInput : String) : Boolean {
+        return try {
+            tryRetryCountRegex(userInput)
+            true
+        } catch (exception : IllegalArgumentException) {
+            PrintForm().noticeInputTryCountMustBeNumber()
+            false
+        }
+    }
+
+    private fun tryRetryCountRegex(userInput : String) {
+        if(!Pattern.matches("^[1-9]*$", userInput)) throw IllegalArgumentException()
     }
 }
