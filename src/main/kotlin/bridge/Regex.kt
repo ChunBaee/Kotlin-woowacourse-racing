@@ -2,8 +2,18 @@ package bridge
 
 class Regex {
 
-    fun checkUserInputCarName(userInput: String) {
+    fun checkUserInputCarName(userInput: String): Boolean {
         val carNameList = userInput.split(",")
+        return try {
+            tryCarNameRegex(carNameList)
+            true
+        } catch (exception : IllegalArgumentException) {
+            PrintForm().noticeInputHaveError()
+            false
+        }
+    }
+
+    private fun tryCarNameRegex(carNameList : List<String>) {
         carNameList.forEach { carName ->
             checkEachCarNameLength(carName)
         }
